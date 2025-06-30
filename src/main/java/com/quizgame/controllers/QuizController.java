@@ -4,6 +4,8 @@ import com.quizgame.models.Database;
 import com.quizgame.models.Question;
 import com.quizgame.models.QuizResult;
 import com.sun.javafx.charts.Legend;
+import javafx.animation.Animation;
+import javafx.animation.Timeline;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -14,11 +16,18 @@ import javafx.scene.Scene;
 import javafx.scene.control.*;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
-
+import javafx.animation.KeyFrame;
+import javafx.animation.Timeline;
+import javafx.application.Platform;
+import javafx.scene.control.Alert;
+import javafx.scene.control.ButtonType;
+import javafx.util.Duration;
+import java.util.Optional;
 import java.io.IOException;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class QuizController {
     @FXML private TextField playerNameField;
@@ -30,15 +39,68 @@ public class QuizController {
     @FXML private Label resultLabel;
     @FXML private VBox mainContainer;
     @FXML private Button playAgainButton;
+    @FXML private Label timerLabel;
+    @FXML private Button exitButton;
+    private Timeline quizTimer;
+    private final Integer quizDuration = 30; // 5 minutes (in seconds)
+    private Integer timeRemaining = quizDuration;
+
     private List<Question> questions;
     private List<ToggleGroup> toggleGroups = new ArrayList<>();
 
     @FXML
     public void initialize() {
         // Initial state
+        setupTimer();
         submitButton.setDisable(true);
         playAgainButton.setDisable(true);
 
+    }
+    private void setupTimer() {
+        quizTimer = new Timeline(
+                new KeyFrame(Duration.seconds(1), e -> {
+                    timeRemaining--;
+                    updateTimerDisplay();
+
+                    if (timeRemaining <= 0) {
+                        handleTimeUp();
+                    }
+                })
+        );
+        quizTimer.setCycleCount(Animation.INDEFINITE);
+    }
+
+    private void updateTimerDisplay() {
+        int minutes = timeRemaining / 60;
+        int seconds = timeRemaining % 60;
+        timerLabel.setText(String.format("Time Remaining: %02d:%02d", minutes, seconds));
+
+        // Change color when time is running low
+        if (timeRemaining <= 60) {
+            timerLabel.setStyle("-fx-text-fill: #ff0000; -fx-font-weight: bold;");
+        }
+    }
+
+    private void handleTimeUp() {
+        quizTimer.stop();
+        submitButton.setDisable(true);
+        playAgainButton.setDisable(false);
+        resultLabel.setText("Time's up! Your quiz has been automatically submitted.");
+        handleSubmitButton(); // Auto-submit
+    }
+
+    @FXML
+    private void handleExitButton() {
+        Alert alert = new Alert(Alert.AlertType.CONFIRMATION);
+        alert.setTitle("Exit Quiz");
+        alert.setHeaderText("Are you sure you want to exit?");
+        alert.setContentText("Your current progress will be lost.");
+
+        Optional<ButtonType> result = alert.showAndWait();
+        if (result.isPresent() && result.get() == ButtonType.OK) {
+            Platform.exit();
+            System.exit(0);
+        }
     }
 
     @FXML
@@ -74,6 +136,10 @@ public class QuizController {
         }
 
         try {
+            // Start the timer when quiz begins
+            quizTimer.play();
+            timeRemaining = quizDuration;
+            updateTimerDisplay();
             questions = Database.getRandomQuestions(5);
             displayQuestions();
 
@@ -106,6 +172,10 @@ public class QuizController {
 
     @FXML
     private void handlePlayAgainButton() {
+        // Reset timer when playing again
+        timeRemaining = quizDuration;
+        quizTimer.stop();
+        updateTimerDisplay();
         // Reset quiz
         quizContainer.getChildren().clear();
         toggleGroups.clear();
