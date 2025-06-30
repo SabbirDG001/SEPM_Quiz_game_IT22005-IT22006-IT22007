@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="com.quizgame.controllers.QuizController">
+
+    <top>
+        <HBox style="-fx-padding: 10;" alignment="CENTER">
+            <Label text="Quiz Game" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+            <StackPane HBox.hgrow="ALWAYS"/>
+            <Button fx:id="historyButton" text="View History" onAction="#handleHistoryButton"
+                    style="-fx-font-size: 14px;"/>
+        </HBox>
+    </top>
+
+    <center>
+        <ScrollPane fitToWidth="true">
+            <VBox fx:id="mainContainer" spacing="10" style="-fx-padding: 20;">
+                <HBox spacing="10">
+                    <Label text="Enter your name:"/>
+                    <TextField fx:id="playerNameField" promptText="Your name"/>
+                    <Button fx:id="startButton" text="Start Quiz" onAction="#handleStartButton"/>
+                </HBox>
+
+                <VBox fx:id="quizContainer" spacing="15"/>
+
+                <HBox spacing="10">
+                    <Button fx:id="submitButton" text="Submit" onAction="#handleSubmitButton" disable="true"/>
+                    <Button fx:id="resetButton" text="Reset" onAction="#handleResetButton"/>
+                    <Button fx:id="playAgainButton" text="Play Again" onAction="#handlePlayAgainButton" disable="true"/>
+                </HBox>
+                <Label fx:id="resultLabel" style="-fx-font-size: 16px; -fx-text-fill: #0066cc; -fx-font-weight: bold;"/>
+            </VBox>
+        </ScrollPane>
+    </center>
+
+    <bottom>
+        <Separator/>
+    </bottom>
+</BorderPane>
