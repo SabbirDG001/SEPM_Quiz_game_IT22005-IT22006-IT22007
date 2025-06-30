@@ -15,26 +15,85 @@ public class DatabaseInitializer {
 
         // Sample questions
         String[][] questions = {
-                {"What is the capital of France?", "London", "Paris", "Berlin", "Madrid", "2"},
-                {"Which planet is known as the Red Planet?", "Venus", "Mars", "Jupiter", "Saturn", "2"},
-                {"What is the largest mammal?", "Elephant", "Blue Whale", "Giraffe", "Hippopotamus", "2"},
-                {"In which year did World War II end?", "1943", "1945", "1947", "1950", "2"},
-                {"Who painted the Mona Lisa?", "Vincent van Gogh", "Pablo Picasso", "Leonardo da Vinci", "Michelangelo", "3"},
-                {"What is the chemical symbol for gold?", "Go", "Gd", "Au", "Ag", "3"},
-                {"Which country is home to the kangaroo?", "South Africa", "Brazil", "Australia", "New Zealand", "3"},
-                {"What is the largest ocean on Earth?", "Atlantic", "Indian", "Pacific", "Arctic", "3"},
-                {"Who wrote 'Romeo and Juliet'?", "Charles Dickens", "William Shakespeare", "Jane Austen", "Mark Twain", "2"},
-                {"What is the square root of 64?", "4", "6", "8", "10", "3"},
-                {"Which element has the atomic number 1?", "Helium", "Hydrogen", "Lithium", "Oxygen", "2"},
-                {"In computing, what does CPU stand for?", "Central Processing Unit", "Computer Processing Unit", "Central Process Unit", "Computer Process Unit", "1"},
-                {"What is the main component of the Sun?", "Liquid Lava", "Hydrogen Gas", "Molten Iron", "Rock", "2"},
-                {"Which country is the largest by area?", "China", "United States", "Canada", "Russia", "4"},
-                {"What is the currency of Japan?", "Won", "Yen", "Yuan", "Dollar", "2"},
-                {"How many continents are there?", "5", "6", "7", "8", "3"},
-                {"Which language is spoken in Brazil?", "Spanish", "Portuguese", "French", "English", "2"},
-                {"What is the hardest natural substance on Earth?", "Gold", "Iron", "Diamond", "Platinum", "3"},
-                {"Who discovered gravity?", "Albert Einstein", "Isaac Newton", "Galileo Galilei", "Nikola Tesla", "2"},
-                {"What is the largest desert in the world?", "Sahara", "Arabian", "Gobi", "Antarctic", "4"}
+                {"What is Mymensingh famous for in agriculture?",
+                        "Tea production", "Jute production", "Rice production", "Wheat production",
+                        "2"},
+
+                {"Which river flows beside Mymensingh city?",
+                        "Padma", "Jamuna", "Brahmaputra", "Meghna",
+                        "3"},
+
+                {"What is the traditional folk song of Mymensingh called?",
+                        "Bhatiali", "Baul", "Murshidi", "Bhawaiya",
+                        "4"},
+
+                {"Which famous university is located in Mymensingh?",
+                        "Dhaka University", "Bangladesh Agricultural University", "Jahangirnagar University", "Rajshahi University",
+                        "2"},
+
+                {"What is the name of the famous park in Mymensingh?",
+                        "Ramna Park", "Shahid Zia Park", "Botanical Garden", "Amrtokunda Park",
+                        "4"},
+
+                {"Which traditional craft is Mymensingh known for?",
+                        "Nakshi Kantha", "Shital Pati", "Pottery", "Bamboo crafts",
+                        "1"},
+
+                {"What is the approximate distance of Mymensingh from Dhaka?",
+                        "50 km", "100 km", "120 km", "200 km",
+                        "3"},
+
+                {"Which famous poet was born in Mymensingh?",
+                        "Kazi Nazrul Islam", "Rabindranath Tagore", "Jasimuddin", "Shamsur Rahman",
+                        "3"},
+
+                {"What is the main festival celebrated in Mymensingh?",
+                        "Pohela Boishakh", "Nouka Baich", "Rash Mela", "Bhawaiya Festival",
+                        "4"},
+
+                {"Which famous museum is located in Mymensingh?",
+                        "Liberation War Museum", "Zainul Abedin Museum", "Bangabandhu Museum", "Ethnological Museum",
+                        "2"},
+
+                {"What is the traditional food of Mymensingh?",
+                        "Morog Polao", "Kachchi Biryani", "Monda", "Bhakor Vaja",
+                        "4"},
+
+                {"Which wildlife sanctuary is near Mymensingh?",
+                        "Sundarbans", "Lawachara", "Bhawal National Park", "Madhupur National Park",
+                        "4"},
+
+                {"What is the main economic activity in Mymensingh?",
+                        "Fishing", "Agriculture", "Handicrafts", "Tourism",
+                        "2"},
+
+                {"Which famous folk theater originated in Mymensingh?",
+                        "Jatra", "Pala Gan", "Kabigan", "Bhawaiya Gan",
+                        "3"},
+
+                {"What is the climate of Mymensingh like?",
+                        "Desert climate", "Tropical monsoon", "Temperate", "Mediterranean",
+                        "2"},
+
+                {"Which famous freedom fighter was from Mymensingh?",
+                        "Sheikh Mujibur Rahman", "Tajuddin Ahmad", "Abdul Hamid Khan Bhashani", "Captain Mohiuddin Jahangir",
+                        "4"},
+
+                {"What is the traditional dance of Mymensingh called?",
+                        "Manipuri", "Kathak", "Bhawaiya Nritya", "Lathi Khela",
+                        "3"},
+
+                {"Which famous agricultural research center is in Mymensingh?",
+                        "BRRI", "BARI", "BLRI", "BINA",
+                        "1"},
+
+                {"What is the famous sweet of Mymensingh?",
+                        "Rasgulla", "Sandesh", "Monda", "Chomchom",
+                        "3"},
+
+                {"Which historical monument is in Mymensingh?",
+                        "Lalbagh Fort", "Ahsan Manzil", "Shashi Lodge", "Kantajew Temple",
+                        "3"}
         };
 
         // Insert questions into database
